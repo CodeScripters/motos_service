@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.math.BigInteger;
 import java.util.Date;
 
 @Data
@@ -15,17 +16,16 @@ import java.util.Date;
 @Document
 public class User {
     @Id
-    private String id;
+    private final BigInteger documentNumber;
     private final String firstName;
     private final String lastName;
     private final Gender gender;
     private final Role role;
-    private final Integer documentNumber;
-    private final Integer licenseNumber;
+    private final BigInteger licenseNumber;
     private final String address;
     private final String city;
     private final Date dateOfBirth;
-    private final Integer phoneNumber;
+    private final BigInteger phoneNumber;
     private final String emailAddress;
     private final Motorcycle motorcycle;
     private final String createdBy;

@@ -3,6 +3,7 @@ package com.codescripters.motos.User;
 import com.codescripters.motos.Utils.UserModel;
 import com.codescripters.motos.Utils.Utils;
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
@@ -17,8 +18,8 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("/all")
-    public List<User> getAllUsers() {
-        return userService.getUsers();
+    public ResponseEntity<List<User>> getAllUsers() {
+        return ResponseEntity.ok(userService.getUsers());
     }
 
     @PostMapping("/create")
@@ -28,11 +29,11 @@ public class UserController {
         Date dateOfBirth = Utils.formatDate(user.getDateOfBirth());
 
         User userToCreate = new User(
+                user.getDocumentNumber(),
                 user.getFirstName(),
                 user.getLastName(),
                 user.getGender(),
                 user.getRole(),
-                user.getDocumentNumber(),
                 user.getLicenseNumber(),
                 user.getAddress(),
                 "Medellin",

@@ -11,4 +11,4 @@ services:
       - MONGO_INITDB_ROOT_USERNAME:rootuser
       - MONGO_INITDB_ROOT_PASSWORD:rootpass
 volumes:
-  data:
+  data: {}

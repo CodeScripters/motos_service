@@ -2,33 +2,33 @@ package com.codescripters.motos.Utils;
 
 import com.codescripters.motos.Motorcycle.Motorcycle;
 
+import java.math.BigInteger;
 import java.time.ZonedDateTime;
 
 public class UserModel {
-    private String id;
+private BigInteger documentNumber;
     private String firstName;
     private String lastName;
     private Gender gender;
     private Role role;
-    private Integer documentNumber;
-    private Integer licenseNumber;
+    private BigInteger licenseNumber;
     private String address;
     private String city;
     private String dateOfBirth;
-    private Integer phoneNumber;
+    private BigInteger phoneNumber;
     private String emailAddress;
     private Motorcycle motorcycle;
     private String createdBy;
     private String createdAt;
     private String updatedAt;
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
+//    public String getId() {
+//        return id;
+//    }
+//
+//    public void setId(String id) {
+//        this.id = id;
+//    }
 
     public String getFirstName() {
         return firstName;
@@ -62,19 +62,19 @@ public class UserModel {
         this.role = role;
     }
 
-    public Integer getDocumentNumber() {
+    public BigInteger getDocumentNumber() {
         return documentNumber;
     }
 
-    public void setDocumentNumber(Integer documentNumber) {
+    public void setDocumentNumber(BigInteger documentNumber) {
         this.documentNumber = documentNumber;
     }
 
-    public Integer getLicenseNumber() {
+    public BigInteger getLicenseNumber() {
         return licenseNumber;
     }
 
-    public void setLicenseNumber(Integer licenseNumber) {
+    public void setLicenseNumber(BigInteger licenseNumber) {
         this.licenseNumber = licenseNumber;
     }
 
@@ -102,11 +102,11 @@ public class UserModel {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public Integer getPhoneNumber() {
+    public BigInteger getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Integer phoneNumber) {
+    public void setPhoneNumber(BigInteger phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

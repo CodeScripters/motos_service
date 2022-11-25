@@ -11,9 +11,8 @@ import java.time.LocalDateTime;
 @Document
 public class Motorcycle {
     @Id
-    private String id;
-    private String brandName;
     private String plates;
+    private String brandName;
     private Integer modelYear;
     private User user;
     private String createdBy;
