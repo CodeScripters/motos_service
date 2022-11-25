@@ -23,5 +23,7 @@ En caso de que no estén dentro del archivo `application.properties` se deben ag
 
 Una vez validado que todo esté correcto y el contenedor con la BD se esté ejecutando, se debe ejecutar la tarea `MotosApplication`
 
+# Swagger UI
+Una vez la aplicación esté en ejecución se podrá ver la documentación que genera el plugin de Swagger accediendo a la dirección [http://localhost:8080/api/v1/swagger-ui.html](http://localhost:8080/api/v1/swagger-ui.html)
 
 *CodeScripters*
