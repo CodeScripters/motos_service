@@ -1,12 +1,17 @@
-package com.codescripters.motos.Utils;
+package com.codescripters.motos.User;
 
 import com.codescripters.motos.Motorcycle.Motorcycle;
+import com.codescripters.motos.Utils.Gender;
+import com.codescripters.motos.Utils.Role;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import java.math.BigInteger;
-import java.time.ZonedDateTime;
 
-public class UserModel {
-private BigInteger documentNumber;
+public class UserPOJO {
+    private BigInteger documentNumber;
     private String firstName;
     private String lastName;
     private Gender gender;
@@ -21,14 +26,6 @@ private BigInteger documentNumber;
     private String createdBy;
     private String createdAt;
     private String updatedAt;
-
-//    public String getId() {
-//        return id;
-//    }
-//
-//    public void setId(String id) {
-//        this.id = id;
-//    }
 
     public String getFirstName() {
         return firstName;
