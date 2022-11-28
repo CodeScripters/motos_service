@@ -1,15 +1,14 @@
 package com.codescripters.motos.User;
 
-import com.codescripters.motos.Utils.Utils;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.math.BigInteger;
-import java.text.ParseException;
-import java.time.Instant;
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -19,10 +18,9 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("/all")
-    public ResponseEntity<Object> getAllUsers(@RequestParam Map<String, Object> params) {
+    public ResponseEntity<List<User>> getAllUsers(@RequestParam Map<String, Object> params) {
         if(!params.isEmpty()) {
             return new ResponseEntity<>(
-                    "The REQUEST does not allow parameters",
                     HttpStatus.BAD_REQUEST
             );
         }
@@ -33,12 +31,11 @@ public class UserController {
     }
 
     @GetMapping("/{userId}")
-    public ResponseEntity<Object> getOneUser(@PathVariable BigInteger userId) {
+    public ResponseEntity<User> getOneUser(@PathVariable BigInteger userId) {
         User foundUser = userService.getUser(userId);
 
         if(foundUser == null) {
             return new ResponseEntity<>(
-              "User with document " + userId.toString() + " not found",
               HttpStatus.NOT_FOUND
             );
         }
@@ -50,13 +47,11 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Object> createUser(@RequestBody UserPOJO user) throws ParseException {
+    public ResponseEntity<User> createUser(@RequestBody @Valid UserPOJO user) {
         User userFound = userService.getUser(user.getDocumentNumber());
 
         if(userFound == null) {
-            Date createdAt = Utils.formatDate(Instant.now().toString());
-            Date updatedAt = Utils.formatDate(Instant.now().toString());
-            Date dateOfBirth = Utils.formatDate(user.getDateOfBirth());
+            LocalDate newDate = LocalDate.now();
 
             User userToCreate = new User(
                     user.getDocumentNumber(),
@@ -67,13 +62,13 @@ public class UserController {
                     user.getLicenseNumber(),
                     user.getAddress(),
                     "Medellin",
-                    dateOfBirth,
+                    user.getDateOfBirth(),
                     user.getPhoneNumber(),
                     user.getEmailAddress(),
                     user.getMotorcycle(),
                     user.getCreatedBy(),
-                    createdAt,
-                    updatedAt
+                    newDate,
+                    newDate
             );
 
             return new ResponseEntity<>(
@@ -83,7 +78,7 @@ public class UserController {
         }
 
         return new ResponseEntity<>(
-                "The user with document " + user.getDocumentNumber().toString() + " already exists",
+                userFound,
                 HttpStatus.BAD_REQUEST
         );
     }

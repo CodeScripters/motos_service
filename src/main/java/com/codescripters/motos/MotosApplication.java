@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MotosApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MotosApplication.class, args);
+		SpringApplication.run(MotosApplication.class, args).getBean(MongoConfig.class);
 	}
 
 }
