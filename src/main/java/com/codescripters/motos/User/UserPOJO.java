@@ -15,52 +15,52 @@ import java.time.LocalDate;
 @AllArgsConstructor(staticName = "build")
 @NoArgsConstructor
 public class UserPOJO {
-    private final String nullMessage = "Must not be null or blank";
+    private static final String NULL_MESSAGE = "Must not be null or blank";
 
-    @NotNull(message = nullMessage)
+    @NotNull(message = NULL_MESSAGE)
     @Digits(message = "Should have only 10 digits", integer = 10, fraction = 0)
     private BigInteger documentNumber;
 
-    @NotBlank(message = nullMessage)
+    @NotBlank(message = NULL_MESSAGE)
     @Size(min = 3, max = 60, message = "Should be at least 3 characters")
     private String firstName;
 
-    @NotBlank(message = nullMessage)
+    @NotBlank(message = NULL_MESSAGE)
     @Size(min = 3, max = 60, message = "Should be at least 3 characters")
     private String lastName;
 
-    @NotNull(message = nullMessage)
+    @NotNull(message = NULL_MESSAGE)
     private Gender gender;
 
-    @NotNull(message = nullMessage)
+    @NotNull(message = NULL_MESSAGE)
     private Role role;
 
-    @NotNull(message = nullMessage)
+    @NotNull(message = NULL_MESSAGE)
     @Digits(message = "Should have only 10 digits", integer = 10, fraction = 0)
     private BigInteger licenseNumber;
 
-    @NotBlank(message = nullMessage)
+    @NotBlank(message = NULL_MESSAGE)
     @Size(min = 7, max = 30, message = "Should be at least 7 characters")
     private String address;
 
     private String city;
 
-    @NotNull(message = nullMessage)
+    @NotNull(message = NULL_MESSAGE)
     @Past(message = "Must not be in the future")
     private LocalDate dateOfBirth;
 
-    @NotNull(message = nullMessage)
+    @NotNull(message = NULL_MESSAGE)
     @Digits(message = "Should have only 10 digits", integer = 10, fraction = 0)
     private BigInteger phoneNumber;
 
-    @NotBlank(message = nullMessage)
+    @NotBlank(message = NULL_MESSAGE)
     @Email(message = "Should be a valid email address")
     @Size(min = 7, message = "Should be at least 7 characters")
     private String emailAddress;
 
     private Motorcycle motorcycle;
 
-    @NotBlank(message = nullMessage)
+    @NotBlank(message = NULL_MESSAGE)
     @Size(min = 4, message = "Should be at least 4 characters")
     private String createdBy;
 

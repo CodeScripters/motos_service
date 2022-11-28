@@ -1,4 +1,4 @@
-package com.codescripters.motos;
+package com.codescripters.motos.Config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
