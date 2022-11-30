@@ -1,20 +1,16 @@
 package com.codescripters.motos.Motorcycle;
 
 import com.codescripters.motos.User.User;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.time.LocalDateTime;
 
 @Data
-@RequiredArgsConstructor
-@Document
+@AllArgsConstructor(staticName = "build")
+@NoArgsConstructor
 public class MotorcyclePOJO {
     private static final String NULL_MESSAGE = "Must not be null or blank";
 

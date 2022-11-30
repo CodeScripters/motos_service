@@ -1,5 +1,6 @@
 package com.codescripters.motos.User;
 
+import com.codescripters.motos.Utils.exception.NotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,15 +31,9 @@ public class UserController {
         );
     }
 
-    @GetMapping("/{userId}")
-    public ResponseEntity<User> getOneUser(@PathVariable BigInteger userId) {
+    @GetMapping("/document/{userId}")
+    public ResponseEntity<User> getOneUser(@PathVariable BigInteger userId) throws NotFoundException {
         User foundUser = userService.getUser(userId);
-
-        if(foundUser == null) {
-            return new ResponseEntity<>(
-              HttpStatus.NOT_FOUND
-            );
-        }
 
         return new ResponseEntity<>(
                 foundUser,
@@ -47,7 +42,7 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<User> createUser(@RequestBody @Valid UserPOJO user) {
+    public ResponseEntity<User> createUser(@RequestBody @Valid UserPOJO user) throws NotFoundException {
         User userFound = userService.getUser(user.getDocumentNumber());
 
         if(userFound == null) {

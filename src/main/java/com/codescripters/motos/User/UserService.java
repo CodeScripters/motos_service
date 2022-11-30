@@ -1,5 +1,6 @@
 package com.codescripters.motos.User;
 
+import com.codescripters.motos.Utils.exception.NotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -8,9 +9,10 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
 import java.util.List;
+import com.codescripters.motos.Utils.*;
 
-@AllArgsConstructor
 @Service
+@AllArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
     private final MongoTemplate mongoTemplate;
@@ -19,20 +21,9 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User getUser(BigInteger documentNumber) {
-        Query query = new Query();
-        query.addCriteria(Criteria.where("documentNumber").is(documentNumber));
-        List<User> foundUsers = mongoTemplate.find(query, User.class);
-
-        if(foundUsers.size() > 1) {
-            throw new IllegalStateException("Multiple users found with document " + documentNumber.toString());
-        }
-
-        if(foundUsers.isEmpty()) {
-            return null;
-        }
-
-        return foundUsers.get(0);
+    public User getUser(BigInteger documentNumber) throws NotFoundException {
+        Utils<User, BigInteger> utils = new Utils<>(mongoTemplate);
+        return (User)utils.getOne("documentNumber", documentNumber, User.class);
     }
 
     public User saveUser(User user) {
