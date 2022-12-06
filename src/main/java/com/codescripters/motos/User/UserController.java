@@ -60,7 +60,7 @@ public class UserController {
                     user.getDateOfBirth(),
                     user.getPhoneNumber(),
                     user.getEmailAddress(),
-                    user.getMotorcycle(),
+                    user.getMotorcycles(),
                     user.getCreatedBy(),
                     newDate,
                     newDate

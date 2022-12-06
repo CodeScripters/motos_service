@@ -6,10 +6,12 @@ import com.codescripters.motos.Utils.Role;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigInteger;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @RequiredArgsConstructor
@@ -28,7 +30,8 @@ public class User {
     private final LocalDate dateOfBirth;
     private final BigInteger phoneNumber;
     private final String emailAddress;
-    private final Motorcycle motorcycle;
+    @DBRef
+    private final List<Motorcycle> motorcycles;
     private final String createdBy;
     private final LocalDate createdAt;
     private final LocalDate updatedAt;

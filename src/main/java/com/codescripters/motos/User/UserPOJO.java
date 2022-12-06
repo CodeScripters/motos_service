@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import javax.validation.constraints.*;
 import java.math.BigInteger;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @AllArgsConstructor(staticName = "build")
@@ -58,7 +59,7 @@ public class UserPOJO {
     @Size(min = 7, message = "Should be at least 7 characters")
     private String emailAddress;
 
-    private Motorcycle motorcycle;
+    private List<Motorcycle> motorcycles;
 
     @NotBlank(message = NULL_MESSAGE)
     @Size(min = 4, message = "Should be at least 4 characters")
