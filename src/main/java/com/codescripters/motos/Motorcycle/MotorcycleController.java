@@ -50,9 +50,9 @@ public class MotorcycleController {
 
             Motorcycle motorcycleToCreate = new Motorcycle(
                     motorcyclePOJO.getPlates(),
+                    motorcyclePOJO.getUserDocument(),
                     motorcyclePOJO.getBrandName(),
                     motorcyclePOJO.getModelYear(),
-                    motorcyclePOJO.getUser(),
                     motorcyclePOJO.getCreatedBy(),
                     newDate,
                     newDate

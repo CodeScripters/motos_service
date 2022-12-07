@@ -14,10 +14,10 @@ import java.time.LocalDate;
 public class Motorcycle {
     @Id
     private String id;
+    private final String userDocument;
     private final String plates;
     private final String brandName;
     private final Integer modelYear;
-    private final User user;
     private final String createdBy;
     private final LocalDate createdAt;
     private final LocalDate updatedAt;

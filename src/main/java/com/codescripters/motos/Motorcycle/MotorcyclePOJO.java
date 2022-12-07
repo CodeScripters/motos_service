@@ -14,6 +14,9 @@ import java.time.LocalDateTime;
 public class MotorcyclePOJO {
     private static final String NULL_MESSAGE = "Must not be null or blank";
 
+    @Null
+    private String userDocument;
+
     @NotBlank(message = NULL_MESSAGE)
     @Size(min = 3, max = 60, message = "Should be at least 3 characters")
     private String plates;
@@ -25,8 +28,6 @@ public class MotorcyclePOJO {
     @NotNull(message = NULL_MESSAGE)
     @Digits(message = "Should have only 10 digits", integer = 10, fraction = 0)
     private Integer modelYear;
-
-    private User user;
 
     @NotBlank(message = NULL_MESSAGE)
     @Size(min = 3, max = 60, message = "Should be at least 3 characters")
